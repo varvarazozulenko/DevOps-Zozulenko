@@ -16,5 +16,4 @@ jobs:
         with:
           python-version: '3.13'
       - run: python --version
-      # K3-03: add the command which actually runs tests/test_app.py.
-  # K3-04: add a separate build job, needs: test, checkout and docker build.
+      - run: python -m unittest discover -s tests -p test_app.py -v
