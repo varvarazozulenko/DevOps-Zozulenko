@@ -91,7 +91,7 @@ class AppTests(unittest.TestCase):
     def test_metrics(self):
         self.request('/api/requests')
         status, body = self.request('/metrics')
-        self.assertEqual(status, 201)
+        self.assertEqual(status, 200)
         self.assertIn(b'devops_http_requests_total{role="web",status="200"} 1', body)
 
     def test_banner(self):
