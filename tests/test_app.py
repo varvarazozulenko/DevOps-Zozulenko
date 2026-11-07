@@ -65,7 +65,7 @@ class AppTests(unittest.TestCase):
 
     def test_create_request(self):
         status, body = self.request('/api/requests', {'kind':'screen','key':'test-create'})
-        self.assertEqual(status, 200)
+        self.assertEqual(status, 201)
         self.assertEqual(json.loads(body)['request']['kind'], 'screen')
         status, body = self.request('/api/requests')
         self.assertEqual(json.loads(body)['total'], 1)
@@ -91,7 +91,7 @@ class AppTests(unittest.TestCase):
     def test_metrics(self):
         self.request('/api/requests')
         status, body = self.request('/metrics')
-        self.assertEqual(status, 200)
+        self.assertEqual(status, 201)
         self.assertIn(b'devops_http_requests_total{role="web",status="200"} 1', body)
 
     def test_banner(self):
